@@ -2,7 +2,11 @@
 A visual pathfinding program that allows the user to create their own obstacles or mazes and then run different pathfinding algorithms on it. This program includes the ability to place weighted path nodes, a results display after each successful path found, and five different algorithms to choose from.
 
 # Table of Contents
-[Requirements and Installation](#req)
+* [Requirements and Installation](#req)
+* [Features](#features)
+* [Controls](#controls)
+* [Future Implementations](#future)
+* [Extra Information](#extra)
 
 ## Requirements and Installation <a name="req"></a>
 **Required Modules**
@@ -21,7 +25,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
 **Running**
 * You can run the program by running visualizer.py!
 
-# Controls
+## Controls <a name="controls"></a>
 Left click to place a node.
    * Your first click will be the start node. (Green)
    * Your second click will be the end node. (Red)
@@ -39,7 +43,7 @@ Press the "c" key to reset the board.
 
 Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
-# Features
+## Features <a name="features"></a>
 Five Unique Pathfinding Algorithms
    * A* Search 
    * Dijkstras Algorithm 
@@ -60,7 +64,7 @@ A results display that shows the following information after each successful com
 
 A toggleable speed that you can change before / during the running of an algorithm.
 
-# Extra Information
+## Extra Information <a name="extra"></a>
 **A Star Search**
 * I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
   * Note that not all A* searches are weighted!
@@ -77,7 +81,7 @@ A toggleable speed that you can change before / during the running of an algorit
 * A* Search is guaranteed to return the shortest path.
 
 
-# Future Implementations
+## Future Implementations <a name="future"></a>
 A maze generator (recursive divison..?)
 
 Let the user search from a variety of different heuristics.
