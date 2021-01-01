@@ -67,7 +67,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
   * Note that not all A* searches are weighted!
 * This implementation uses a priority queue for its frontier, which prioritizes nodes with the lowest F score.
-  * F = G + H, where
+  * F = G + H + node cost, where
     * G is the distance from current node to start node
     * and H is the estimated distance from current node to end node (calculated by heuristic)
 * The runtime and space complexity depends on the heuristic.
@@ -77,3 +77,37 @@ A visual pathfinding program that allows the user to create their own obstacles 
   * I am using the Manhattan Distance which is an admissible heuristic. 
     * An admissible heuristic never overestimates the cost of reaching the goal node
 * A* Search is guaranteed to return the shortest path.
+
+**Greedy Best First Search**
+* Greedy Best First Search is a weighted algorithm that does not guarantee the shortest path.
+* It is similar to A* search, except it does not care about the G score.
+  * This means that its evaluation for F score = H + node cost, where H is the heuristic. (Manhattan Distance)
+* This implementation uses a priority queue for its frontier.
+* The runtime and space complexity depends on the heuristic.
+  * The worst case time and space complexity is O(b ^ m), where
+    * b is the branching factor (number of successor nodes per state)
+    * and m is the maximum depth of the search space
+
+**Dijkstra's Algorithm**
+* Dijkstra's Algorithm is a weighted algorithm that guarantees the shortest path.
+* It is similar to A* search, except it does not use a heuristic.
+  * This means that its evaluation for F score = G + node cost, where G is the distance from current node to start node
+* This implementation uses a priority queue for its frontier.
+* The time and space complexity is O(E log N), where 
+  * E is the number of edges 
+  * and N is number of nodes
+
+**Breadth First Search**
+* Breadth First Search is a non-weighted algorithm that guarantees the shortest path.
+  * Note that this search treats every node as a cost = 1 node. This means that if there
+  * are weighted nodes, it will treat them as normal nodes.
+* Breadth First Search uses FIFO (queue).
+* Time complexity is O(N + E), where N is number of nodes and E is number of edges
+* Space complexity is O(N) where N is the number of nodes in the call stack
+
+**Depth First Search**
+* Depth First Search is a non-weighted algorithm that does not guarantee the shortest path.
+* Depth First Search uses LIFO (stack).
+  * The order of traversal for DFS is Up, Right, Down, Left
+* Time complexity is O(N + E), where N is number of nodes and E is number of edges
+* Space complexity is O(N), where N is the number of nodes in the call stack
