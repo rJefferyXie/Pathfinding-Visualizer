@@ -25,24 +25,6 @@ A visual pathfinding program that allows the user to create their own obstacles 
 **Running**
 * You can run the program by running visualizer.py!
 
-## Controls <a name="controls"></a>
-Left click to place a node.
-   * Your first click will be the start node. (Green)
-   * Your second click will be the end node. (Red)
-   * After start and end are defined, your next clicks will place walls or weights.
-   * Press the "w" key along with left click to place a weighted node with cost = 9 (normal nodes cost 1).
-   * Hold left click and move mouse to place multiple nodes at once.
-  
-Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
-  * Options available for speed: (Slow, Medium, Fast)
-   
-Right click on a node to reset it.
-   * Hold right click and move mouse to reset multiple nodes at once.
-
-Press the "c" key to reset the board.
-
-Press the spacebar key to start the search after choosing a pathfinding algorithm.
-
 ## Features <a name="features"></a>
 Five Unique Pathfinding Algorithms
    * A* Search 
@@ -63,6 +45,24 @@ A results display that shows the following information after each successful com
   * The number of nodes that were visited / searched.
 
 A toggleable speed that you can change before / during the running of an algorithm.
+
+## Controls <a name="controls"></a>
+Left click to place a node.
+   * Your first click will be the start node. (Green)
+   * Your second click will be the end node. (Red)
+   * After start and end are defined, your next clicks will place walls or weights.
+   * Press the "w" key along with left click to place a weighted node with cost = 9 (normal nodes cost 1).
+   * Hold left click and move mouse to place multiple nodes at once.
+  
+Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
+  * Options available for speed: (Slow, Medium, Fast)
+   
+Right click on a node to reset it.
+   * Hold right click and move mouse to reset multiple nodes at once.
+
+Press the "c" key to reset the board.
+
+Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
 ## Extra Information <a name="extra"></a>
 **A Star Search**
