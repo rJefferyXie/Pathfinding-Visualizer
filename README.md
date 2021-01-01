@@ -1,7 +1,10 @@
 # Pathfinding Visualizer by Jeffery Xie
 A visual pathfinding program that allows the user to create their own obstacles or mazes and then run different pathfinding algorithms on it. This program includes the ability to place weighted path nodes, a results display after each successful path found, and five different algorithms to choose from.
 
-# Requirements and Installation
+# Table of Contents
+[Requirements and Installation](#req)
+
+## Requirements and Installation <a name="req"></a>
 **Required Modules**
 * To install, simply enter these commands into your terminal. (for macOS users, replace pip with pip3)
 * pip install pygame
