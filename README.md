@@ -57,7 +57,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
 ## Future Implementations <a name="future"></a>
-* A maze generator (recursive divison..?)
+* A maze generator (recursive division..?)
 * Let the user search from a variety of different heuristics.
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
