@@ -108,6 +108,6 @@ A visual pathfinding program that allows the user to create their own obstacles 
 **Depth First Search**
 * Depth First Search is a non-weighted algorithm that does not guarantee the shortest path.
 * Depth First Search uses LIFO (stack).
-  * The order of traversal for DFS is Up, Right, Down, Left
+  * The order of traversal for DFS is up, right, down, left
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N), where N is the number of nodes in the call stack
