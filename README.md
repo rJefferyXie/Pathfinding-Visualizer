@@ -58,8 +58,21 @@ A results display that shows the following information after each successful com
 A toggleable speed that you can change before / during the running of an algorithm.
 
 # Extra Information
-**A* Search**
-* afaf
+**A Star Search**
+* I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
+  * Note that not all A* searches are weighted!
+* This implementation uses a priority queue for its frontier, which prioritizes nodes with the lowest F score.
+  * F = G + H, where
+    * G is the distance from current node to start node
+    * and H is the estimated distance from current node to end node (calculated by heuristic)
+* The runtime and space complexity depends on the heuristic.
+  * The theoretical time and space complexity is O(b ^ d), where
+    * b is the branching factor (number of successor nodes per state)
+    * and d is the depth of the shortest path to the end node
+  * I am using the Manhattan Distance which is an admissible heuristic. 
+    * An admissible heuristic never overestimates the cost of reaching the goal node
+* A* Search is guaranteed to return the shortest path.
+
 
 # Future Implementations
 A maze generator (recursive divison..?)
