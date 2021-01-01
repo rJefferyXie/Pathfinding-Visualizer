@@ -26,43 +26,41 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * You can run the program by running visualizer.py!
 
 ## Features <a name="features"></a>
-Five Unique Pathfinding Algorithms
+* Five Unique Pathfinding Algorithms
    * A* Search 
    * Dijkstras Algorithm 
    * Greedy Best First Search 
    * Breadth First Search 
    * Depth First Search 
-
-A real time visualization where you can see how each of the different pathfinding algorithms work.
-
-The ability to construct your own mazes / obstacles for the pathfinding algorithm.
+* A real time visualization where you can see how each of the different pathfinding algorithms work.
+* The ability to construct your own mazes / obstacles for the pathfinding algorithm.
   * Can also create weighted nodes for weighted algorithms!
-
-A results display that shows the following information after each successful completion (only updates if a path was found).
+* A results display that shows the following information after each successful completion (only updates if a path was found).
   * The name of the algorithm.
   * The total cost of the solution (sum of all node weights from the path that was found).
   * The time in seconds taken to find the path.
   * The number of nodes that were visited / searched.
-
-A toggleable speed that you can change before / during the running of an algorithm.
+* A toggleable speed that you can change before / during the running of an algorithm.
 
 ## Controls <a name="controls"></a>
-Left click to place a node.
+* Left click to place a node.
    * Your first click will be the start node. (Green)
    * Your second click will be the end node. (Red)
    * After start and end are defined, your next clicks will place walls or weights.
    * Press the "w" key along with left click to place a weighted node with cost = 9 (normal nodes cost 1).
    * Hold left click and move mouse to place multiple nodes at once.
-  
-Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
+* Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
   * Options available for speed: (Slow, Medium, Fast)
-   
-Right click on a node to reset it.
+* Right click on a node to reset it.
    * Hold right click and move mouse to reset multiple nodes at once.
+* Press the "c" key to reset the board.
+* Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
-Press the "c" key to reset the board.
-
-Press the spacebar key to start the search after choosing a pathfinding algorithm.
+## Future Implementations <a name="future"></a>
+* A maze generator (recursive divison..?)
+* Let the user search from a variety of different heuristics.
+  * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
+* Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
 ## Extra Information <a name="extra"></a>
 **A Star Search**
@@ -79,12 +77,3 @@ Press the spacebar key to start the search after choosing a pathfinding algorith
   * I am using the Manhattan Distance which is an admissible heuristic. 
     * An admissible heuristic never overestimates the cost of reaching the goal node
 * A* Search is guaranteed to return the shortest path.
-
-
-## Future Implementations <a name="future"></a>
-A maze generator (recursive divison..?)
-
-Let the user search from a variety of different heuristics.
-  * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
-
-Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
