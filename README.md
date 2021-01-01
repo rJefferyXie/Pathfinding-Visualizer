@@ -25,16 +25,16 @@ Left click to place a node.
    * After start and end are defined, your next clicks will place walls or weights.
    * Press the "w" key along with left click to place a weighted node with cost = 9 (normal nodes cost 1).
    * Hold left click and move mouse to place multiple nodes at once.
+  
+Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
+  * Options available for speed: (Slow, Medium, Fast)
    
 Right click on a node to reset it.
    * Hold right click and move mouse to reset multiple nodes at once.
 
 Press the "c" key to reset the board.
 
-Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
-  * Options available for speed: (Slow, Medium, Fast)
-
-Press the spacebar key to run the algorithm after choosing a pathfinding algorithm.
+Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
 # Features
 Five Unique Pathfinding Algorithms
@@ -56,6 +56,10 @@ A results display that shows the following information after each successful com
   * The number of nodes that were visited / searched.
 
 A toggleable speed that you can change before / during the running of an algorithm.
+
+# Extra Information
+**A* Search**
+* afaf
 
 # Future Implementations
 A maze generator (recursive divison..?)
