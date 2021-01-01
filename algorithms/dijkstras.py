@@ -3,32 +3,11 @@ from node import Node
 import time
 import pygame
 
-def draw_solution(start, end, path, draw, time, visited, win):
-    # Total cost (sum of the weights of all nodes from start to end) of path found
-    cost = 0
-
-    end.place_end()
-
-    # Backtrack from end node to start node and draw the path found
-    current = end
-    while current in path:
-        if current not in (start, end):
-            cost += current.weight
-        current = path[current]
-        current.draw_path()
-        draw()
-
-    start.place_start()
-    
-    win.previous_results = [
-        "Dijkstra's Algorithm Results", 
-        "Total Cost of Path: " + str(cost), 
-        "Time Taken: " + str(time) + " seconds", 
-        "Visited Nodes: " + str(len(visited))]
 
 def algorithm(start, end, grid, draw, win):
     """
     This implementation uses a priority queue for its frontier.
+    Dijkstras is a weighted algorithm and guarantees the shortest path.
     
     Time complexity is O(E log N) 
     Space complexity is O(E log N)
@@ -67,7 +46,12 @@ def algorithm(start, end, grid, draw, win):
         if current_node == end:
             time_taken = round(time.time() - start_time)
             time_seconds = time_taken % 60
-            draw_solution(start, end, path, draw, time_seconds, visited, win)
+            cost = win.draw_solution(start, end, path, draw)
+            win.previous_results = [
+                "Dijkstra's Algorithm Results", 
+                "Total Cost of Path: " + str(cost), 
+                "Time Taken: " + str(time_seconds) + " seconds", 
+                "Visited Nodes: " + str(len(visited))]
             return True
 
         for event in pygame.event.get():

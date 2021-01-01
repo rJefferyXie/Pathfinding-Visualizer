@@ -1,57 +1,19 @@
 from queue import PriorityQueue
 from node import Node
+from algorithms.heuristics import h1
 import math
 import time
 import pygame
-
-def h1(point1, point2):
-    """
-    This is the Manhattan Distance algorithm.
-    """
-    x1, y1 = point1
-    x2, y2 = point2
-    return abs(x1 - x2) + abs(y1 - y2)
-
-def h2(point1, point2):
-    """
-    This is the Euclidian Distance (pythagoreans theorem) Algorithm.
-    I am currently not using this heuristic because it is not admissible with 4 neighbour adjacency.
-    """
-    x1, y1 = point1
-    x2, y2 = point2
-
-    x = abs(x2 - x1)
-    y = abs(y2 - y1)
-    return x + y + (math.sqrt(2) - 2) * min(x, y)
-
-def draw_solution(start, end, path, draw, time, visited, win):
-    # Total cost (sum of the weights of all nodes from start to end) of path found
-    cost = 0
-
-    end.place_end()
-
-    # Backtrack from end node to start node and draw the path found
-    current = end
-    while current in path:
-        if current not in (start, end):
-            cost += current.weight
-        current = path[current]
-        current.draw_path()
-        draw()
-
-    start.place_start()
-    
-    win.previous_results = [
-        "A* Search Results", 
-        "Total Cost of Path: " + str(cost), 
-        "Time Taken: " + str(time) + " seconds", 
-        "Visited Nodes: " + str(len(visited))]
 
 
 def algorithm(start, end, grid, draw, win):
     """
     This implementation uses a priority queue for its frontier.
     The runtime and space complexity depends on the heuristic.
+
+    This is a version of weighted A* search which can calculate 
+    shortest path when the path weights are not all the same.
+    A* Search is guaranteed to return the shortest path.
 
     The theoretical time complexity is O(b ^ d)
     The space complexity is also O(b ^ d)
@@ -95,7 +57,12 @@ def algorithm(start, end, grid, draw, win):
         if current_node == end:
             time_taken = round(time.time() - start_time)
             time_seconds = time_taken % 60
-            draw_solution(start, end, path, draw, time_seconds, visited, win)
+            cost = win.draw_solution(start, end, path, draw)
+            win.previous_results = [
+                "A* Search Results", 
+                "Total Cost of Path: " + str(cost), 
+                "Time Taken: " + str(time_seconds) + " seconds", 
+                "Visited Nodes: " + str(len(visited))]
             return True
 
         for event in pygame.event.get():

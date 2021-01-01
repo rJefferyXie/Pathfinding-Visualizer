@@ -90,7 +90,23 @@ class Window:
                 text = self.font.render(self.previous_results[i], True, (0, 0, 0))
                 self.win.blit(text, (square_size * 27 + 10, square_size * (41 + i) + 10))
 
+    def draw_solution(self, start, end, path, draw):
+        # Total cost (sum of the weights of all nodes from start to end) of path found
+        cost = 0
+        end.place_end()
 
+        # Backtrack from end node to start node and draw the path found
+        current = end
+        while current in path:
+            if current not in (start, end):
+                cost += current.weight
+            current = path[current]
+            current.draw_path()
+            draw()
+
+        start.place_start()
+        return cost
+        
     def draw(self, grid):
         self.win.fill((255, 255, 255))
         
