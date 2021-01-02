@@ -1,5 +1,6 @@
 width, height = 615, 700
 square_size = 15
+rows = cols = 41
 
 white = [255, 255, 255] # Default Nodes
 green = [16, 224, 92]   # Start Nodes

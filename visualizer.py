@@ -1,6 +1,6 @@
 from window import Window
 from node import Node
-from algorithms import a_star, dijkstras, depth_first_search, breadth_first_search, greedy_best_first_search
+from algorithms import a_star, dijkstras, depth_first_search, breadth_first_search, greedy_best_first_search, prims
 import pygame
 
 def start_visualizer():
@@ -118,7 +118,10 @@ def start_visualizer():
                         for Node in row:
                             Node.reset_color()
                             Node.reset_weight()
-
+                
+                # Generate a maze
+                if event.key == pygame.K_g:
+                    start, end, grid = prims.algorithm(grid, lambda: win.draw(grid))
 
     pygame.quit()
 

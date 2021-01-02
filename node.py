@@ -17,6 +17,12 @@ class Node:
     def is_wall(self):
         return self.color == gray
     
+    def is_default(self):
+        return self.color == white
+
+    def is_path(self):
+        return self.color == purple
+    
     def reset_color(self):
         self.color = white
     
