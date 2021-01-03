@@ -52,7 +52,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
    * After start and end are defined, your next clicks will place walls or weights.
    * Press the "w" key along with left click to place a weighted node with cost = 9 (normal nodes cost 1).
    * Hold left click and move mouse to place multiple nodes at once.
-* Left click on any algorithm to select it, and you can toggle the speed of the algorithm by clicking on the speed button.
+* Left click on any algorithm to select it, and you can change the speed of the algorithm by clicking on the speed button.
   * Options available for speed: (Slow, Medium, Fast)
 * Right click on a node to reset it.
    * Hold right click and move mouse to reset multiple nodes at once.
