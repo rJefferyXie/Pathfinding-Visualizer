@@ -65,6 +65,9 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
 ## Extra Information <a name="extra"></a>
+Keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
+
+
 **A Star Search**
 * I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
   * Note that not all A* searches are weighted!
