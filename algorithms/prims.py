@@ -71,7 +71,7 @@ def algorithm(grid, draw):
 
         draw()
 
-    return finish_path(grid)
+    return finish_path(grid, draw)
 
 
 def top_wall(wall, walls, grid):
@@ -152,7 +152,7 @@ def init_path(grid):
     return grid, walls
 
 
-def finish_path(grid):
+def finish_path(grid, draw):
     start = end = None
 
     # Turn the remaining default nodes into walls
@@ -160,6 +160,7 @@ def finish_path(grid):
         for j in range(0, constants.cols):
             if grid[i][j].is_default():
                 grid[i][j].place_wall()
+                draw()
     
     # Set start and end nodes
     for i in range(0, constants.cols):
