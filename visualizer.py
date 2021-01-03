@@ -1,7 +1,7 @@
 from window import Window
-from node import Node
 from algorithms import a_star, dijkstras, depth_first_search, breadth_first_search, greedy_best_first_search, prims
 import pygame
+
 
 def start_visualizer():
     win = Window()
@@ -17,33 +17,33 @@ def start_visualizer():
                 running = False
             
             # Left click will place nodes
-            if pygame.mouse.get_pressed()[0]:
+            if pygame.mouse.get_pressed(3)[0]:
                 pos = pygame.mouse.get_pos()
                 row, col = win.get_mouse_position(pos)
 
                 # Clicking within the grid
                 if 0 <= row <= 40 and 0 <= col <= 40:
-                    Node = grid[row][col]
+                    node = grid[row][col]
 
                     # If there is no start node and you are not clicking on end node
-                    if not start and Node != end:
-                        start = Node
+                    if not start and node != end:
+                        start = node
                         start.place_start()
                     
                     # If there is no end node and you are not clicking on start node
-                    elif not end and Node != start:
-                        end = Node
+                    elif not end and node != start:
+                        end = node
                         end.place_end()
 
                     # If start and end nodes are defined and you are not clicking on them
-                    elif Node != start and Node != end:
+                    elif node != start and node != end:
                         keys = pygame.key.get_pressed()
-                        if keys[pygame.K_w] and not Node.is_wall():
-                            Node.reset_color()
-                            Node.place_weight()
+                        if keys[pygame.K_w] and not node.is_wall():
+                            node.reset_color()
+                            node.place_weight()
                         else:
-                            if Node.weight == 1:
-                                Node.place_wall()
+                            if node.weight == 1:
+                                node.place_wall()
                 
                 # Selecting Algorithms / Heuristic
                 elif 625 <= pos[1] <= 655:
@@ -72,27 +72,27 @@ def start_visualizer():
                         win.selected_algorithm = "breadth_first_search"
             
             # Right click will remove (reset) nodes
-            elif pygame.mouse.get_pressed()[2]:
+            elif pygame.mouse.get_pressed(3)[2]:
                 row, col = win.get_mouse_position(pygame.mouse.get_pos())
                 if 0 <= row <= 40 and 0 <= col <= 40:
-                    Node = grid[row][col]
-                    if Node == start:
+                    node = grid[row][col]
+                    if node == start:
                         start = None
-                    elif Node == end:
+                    elif node == end:
                         end = None
-                    Node.reset_color()
-                    Node.reset_weight()
+                    node.reset_color()
+                    node.reset_weight()
             
             if event.type == pygame.KEYDOWN:
 
                 # If start and end are defined and an algorithm is selected, run the algorithm
                 if event.key == pygame.K_SPACE and start and end:
                     for row in grid:
-                        for Node in row:
-                            if Node != start and Node != end and not Node.is_wall():
-                                Node.reset_color()
+                        for node in row:
+                            if node != start and node != end and not node.is_wall():
+                                node.reset_color()
 
-                            Node.add_neighbours(grid)
+                            node.add_neighbours(grid)
                     
                     if win.selected_algorithm:
                         if win.selected_algorithm == "a_star":
@@ -105,7 +105,7 @@ def start_visualizer():
                             dijkstras.algorithm(start, end, grid, lambda: win.draw(grid), win)
 
                         elif win.selected_algorithm == "depth_first_search":
-                            depth_first_search.algorithm(start, end, grid, lambda: win.draw(grid), win)
+                            depth_first_search.algorithm(start, end, lambda: win.draw(grid), win)
                         
                         elif win.selected_algorithm == "breadth_first_search":
                             breadth_first_search.algorithm(start, end, grid, lambda: win.draw(grid), win)
@@ -115,15 +115,16 @@ def start_visualizer():
                     start = None
                     end = None
                     for row in grid:
-                        for Node in row:
-                            Node.reset_color()
-                            Node.reset_weight()
+                        for node in row:
+                            node.reset_color()
+                            node.reset_weight()
                 
                 # Generate a maze
                 if event.key == pygame.K_g:
                     start, end, grid = prims.algorithm(grid, lambda: win.draw(grid))
 
     pygame.quit()
+
 
 if __name__ == "__main__":
     start_visualizer()

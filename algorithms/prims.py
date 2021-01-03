@@ -16,123 +16,102 @@ def algorithm(grid, draw):
 
         # Check if wall is to the left of the path
         if wall[1] != 0:
-            if grid[wall[0]][wall[1]-1].is_default() and grid[wall[0]][wall[1]+1].is_path():
-                # Find the number of surrounding path nodes
+            if grid[wall[0]][wall[1] - 1].is_default() and grid[wall[0]][wall[1] + 1].is_path():
                 neighbours = get_path_neighbours(wall, grid)
 
                 if neighbours < 2:
                     # Denote the new path
                     grid[wall[0]][wall[1]].draw_path()
 
-                    # Mark the new walls
-                    # Upper cell
-                    if wall[0] != 0:
-                        if not grid[wall[0] - 1][wall[1]].is_path():
-                            grid[wall[0] - 1][wall[1]].place_wall()
-                        if [wall[0] - 1, wall[1]] not in walls:
-                            walls.append([wall[0] - 1, wall[1]])
-
-
-                    # Bottom cell
-                    if wall[0] != constants.rows - 1:
-                        if not grid[wall[0] + 1][wall[1]].is_path():
-                            grid[wall[0] + 1][wall[1]].place_wall()
-                        if [wall[0] + 1, wall[1]] not in walls:
-                            walls.append([wall[0] + 1, wall[1]])
-
-                    # Leftmost cell
-                    if wall[1] != 0:	
-                        if not grid[wall[0]][wall[1] - 1].is_path():
-                            grid[wall[0]][wall[1] - 1].place_wall()
-                        if [wall[0], wall[1] - 1] not in walls:
-                            walls.append([wall[0], wall[1] - 1])
+                    walls, grid = top_wall(wall, walls, grid)
+                    walls, grid = bottom_wall(wall, walls, grid)
+                    walls, grid = left_wall(wall, walls, grid)
 
         # Check if wall is above the path
         if wall[0] != 0:
             if grid[wall[0] - 1][wall[1]].is_default() and grid[wall[0] + 1][wall[1]].is_path():
-
                 neighbours = get_path_neighbours(wall, grid)
+
                 if neighbours < 2:
                     # Denote the new path
                     grid[wall[0]][wall[1]].draw_path()
 
                     # Mark the new walls
-                    # Upper cell
-                    if wall[0] != 0:
-                        if not grid[wall[0] - 1][wall[1]].is_path():
-                            grid[wall[0] - 1][wall[1]].place_wall()
-                        if [wall[0] - 1, wall[1]] not in walls:
-                            walls.append([wall[0] - 1, wall[1]])
-
-                    # Leftmost cell
-                    if wall[1] != 0:
-                        if not grid[wall[0]][wall[1] - 1].is_path():
-                            grid[wall[0]][wall[1] - 1].place_wall()
-                        if [wall[0], wall[1] - 1] not in walls:
-                            walls.append([wall[0], wall[1] - 1])
-
-                    # Rightmost cell
-                    if wall[1] != constants.cols - 1:
-                        if not grid[wall[0]][wall[1] + 1].is_path():
-                            grid[wall[0]][wall[1] + 1].place_wall()
-                        if [wall[0], wall[1] + 1] not in walls:
-                            walls.append([wall[0], wall[1] + 1])
+                    walls, grid = top_wall(wall, walls, grid)
+                    walls, grid = left_wall(wall, walls, grid)
+                    walls, grid = right_wall(wall, walls, grid)
 
         # Check if wall is below the path
         if wall[0] != constants.rows - 1:
-            if grid[wall[0]+1][wall[1]].is_default() and grid[wall[0]-1][wall[1]].is_path():
-
+            if grid[wall[0] + 1][wall[1]].is_default() and grid[wall[0] - 1][wall[1]].is_path():
                 neighbours = get_path_neighbours(wall, grid)
-                if (neighbours < 2):
+
+                if neighbours < 2:
                     # Denote the new path
                     grid[wall[0]][wall[1]].draw_path()
 
                     # Mark the new walls
-                    if wall[0] != constants.rows - 1:
-                        if not grid[wall[0] + 1][wall[1]].is_path():
-                            grid[wall[0] + 1][wall[1]].place_wall()
-                        if [wall[0] + 1, wall[1]] not in walls:
-                            walls.append([wall[0] + 1, wall[1]])
-                    if wall[1] != 0:
-                        if not grid[wall[0]][wall[1] - 1].is_path():
-                            grid[wall[0]][wall[1] - 1].place_wall()
-                        if [wall[0], wall[1] - 1] not in walls:
-                            walls.append([wall[0], wall[1] - 1])
-                    if wall[1] != constants.cols - 1:
-                        if not grid[wall[0]][wall[1] + 1].is_path():
-                            grid[wall[0]][wall[1] + 1].place_wall()
-                        if [wall[0], wall[1] + 1] not in walls:
-                            walls.append([wall[0], wall[1] + 1])
+                    walls, grid = bottom_wall(wall, walls, grid)
+                    walls, grid = left_wall(wall, walls, grid)
+                    walls, grid = right_wall(wall, walls, grid)
 
         # Check if wall is to the right of the path
         if wall[1] != constants.cols - 1:
             if grid[wall[0]][wall[1] + 1].is_default() and grid[wall[0]][wall[1] - 1].is_path():
-
                 neighbours = get_path_neighbours(wall, grid)
+
                 if neighbours < 2:
                     # Denote the new path
                     grid[wall[0]][wall[1]].draw_path()
 
                     # Mark the new walls
-                    if wall[1] != constants.cols-1:
-                        if not grid[wall[0]][wall[1] + 1].is_path():
-                            grid[wall[0]][wall[1] + 1].place_wall()
-                        if [wall[0], wall[1] + 1] not in walls:
-                            walls.append([wall[0], wall[1] + 1])
-                    if wall[0] != constants.rows - 1:
-                        if not grid[wall[0] + 1][wall[1]].is_path():
-                            grid[wall[0] + 1][wall[1]].place_wall()
-                        if [wall[0] + 1, wall[1]] not in walls:
-                            walls.append([wall[0] + 1, wall[1]])
-                    if wall[0] != 0:	
-                        if not grid[wall[0] - 1][wall[1]].is_path():
-                            grid[wall[0] - 1][wall[1]].place_wall()
-                        if [wall[0] - 1, wall[1]] not in walls:
-                            walls.append([wall[0] - 1, wall[1]])
+                    walls, grid = right_wall(wall, walls, grid)
+                    walls, grid = bottom_wall(wall, walls, grid)
+                    walls, grid = top_wall(wall, walls, grid)
 
         draw()
 
     return finish_path(grid)
+
+
+def top_wall(wall, walls, grid):
+    if wall[0] != 0:
+        if not grid[wall[0] - 1][wall[1]].is_path():
+            grid[wall[0] - 1][wall[1]].place_wall()
+        if [wall[0] - 1, wall[1]] not in walls:
+            walls.append([wall[0] - 1, wall[1]])
+
+    return walls, grid
+
+
+def left_wall(wall, walls, grid):
+    if wall[1] != 0:
+        if not grid[wall[0]][wall[1] - 1].is_path():
+            grid[wall[0]][wall[1] - 1].place_wall()
+        if [wall[0], wall[1] - 1] not in walls:
+            walls.append([wall[0], wall[1] - 1])
+
+    return walls, grid
+
+
+def bottom_wall(wall, walls, grid):
+    if wall[0] != constants.rows - 1:
+        if not grid[wall[0] + 1][wall[1]].is_path():
+            grid[wall[0] + 1][wall[1]].place_wall()
+        if [wall[0] + 1, wall[1]] not in walls:
+            walls.append([wall[0] + 1, wall[1]])
+
+    return walls, grid
+
+
+def right_wall(wall, walls, grid):
+    if wall[1] != constants.cols - 1:
+        if not grid[wall[0]][wall[1] + 1].is_path():
+            grid[wall[0]][wall[1] + 1].place_wall()
+        if [wall[0], wall[1] + 1] not in walls:
+            walls.append([wall[0], wall[1] + 1])
+
+    return walls, grid
 
 
 def init_path(grid):
@@ -161,11 +140,8 @@ def init_path(grid):
     grid[starting_height][starting_width].draw_path()
 
     # Initialize the walls list with the walls adjacent to start point
-    walls = []
-    walls.append([starting_height - 1, starting_width])
-    walls.append([starting_height, starting_width - 1])
-    walls.append([starting_height, starting_width + 1])
-    walls.append([starting_height + 1, starting_width])
+    walls = [[starting_height - 1, starting_width], [starting_height, starting_width - 1],
+             [starting_height, starting_width + 1], [starting_height + 1, starting_width]]
 
     # Place starting walls
     grid[starting_height - 1][starting_width].place_wall()
@@ -175,7 +151,10 @@ def init_path(grid):
 
     return grid, walls
 
+
 def finish_path(grid):
+    start = end = None
+
     # Turn the remaining default nodes into walls
     for i in range(0, constants.rows):
         for j in range(0, constants.cols):
@@ -205,14 +184,14 @@ def finish_path(grid):
 
 
 def get_path_neighbours(node, grid):
-	neighbours = 0
-	if grid[node[0] - 1][node[1]].is_path():
-		neighbours += 1
-	if grid[node[0] + 1][node[1]].is_path():
-		neighbours += 1
-	if grid[node[0]][node[1] - 1].is_path():
-		neighbours +=1
-	if grid[node[0]][node[1] + 1].is_path():
-		neighbours += 1
+    neighbours = 0
+    if grid[node[0] - 1][node[1]].is_path():
+        neighbours += 1
+    if grid[node[0] + 1][node[1]].is_path():
+        neighbours += 1
+    if grid[node[0]][node[1] - 1].is_path():
+        neighbours += 1
+    if grid[node[0]][node[1] + 1].is_path():
+        neighbours += 1
 
-	return neighbours
+    return neighbours

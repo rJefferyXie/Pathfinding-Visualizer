@@ -1,5 +1,6 @@
 import pygame
-from constants import white, red, green, gray, purple, blue1, blue2, orange, square_size, width
+from constants import white, red, green, gray, purple, blue1, blue2, square_size, width
+
 
 class Node:
     def __init__(self, row, col):
@@ -69,8 +70,8 @@ class Node:
             
         # Down
         if self.row < width // square_size - 1:
-             neighbour = grid[self.row + 1][self.col]
-             if not neighbour.is_wall():
+            neighbour = grid[self.row + 1][self.col]
+            if not neighbour.is_wall():
                 self.neighbours.append(neighbour)
 
         # Left

@@ -1,6 +1,7 @@
-from constants import width, height, square_size, blue2
+from constants import width, height, square_size, blue2, rows
 from node import Node
 import pygame
+
 
 class Window:
     def __init__(self):
@@ -24,7 +25,7 @@ class Window:
         return grid
 
     def draw_grid(self):
-        for i in range(width // square_size + 1):
+        for i in range(rows):
             pygame.draw.line(self.win, (0, 0, 0), (i * square_size, 0), (i * square_size, width), 1)
             pygame.draw.line(self.win, (0, 0, 0), (0, i * square_size), (width, i * square_size), 1)
     
@@ -33,7 +34,7 @@ class Window:
         # A* Algorithm
         pygame.draw.rect(self.win, (0, 0, 0), (square_size, square_size * 41 + 10, square_size * 8, square_size * 2))
         if self.selected_algorithm == "a_star":
-            pygame.draw.rect(self.win, (blue2), (square_size + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
+            pygame.draw.rect(self.win, blue2, (square_size + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         else:
             pygame.draw.rect(self.win, (255, 255, 255), (square_size + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         text = self.font.render("A* Search", True, (0, 0, 0))
@@ -42,7 +43,7 @@ class Window:
         # Greedy BFS Algorithm
         pygame.draw.rect(self.win, (0, 0, 0), (square_size, square_size * 44, square_size * 8, square_size * 2))
         if self.selected_algorithm == "greedy_best_first_search":
-            pygame.draw.rect(self.win, (blue2), (square_size + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
+            pygame.draw.rect(self.win, blue2, (square_size + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
         else:
             pygame.draw.rect(self.win, (255, 255, 255), (square_size + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
         text = self.font.render("Greedy Best First", True, (0, 0, 0))
@@ -51,7 +52,7 @@ class Window:
         # BFS Algorithm
         pygame.draw.rect(self.win, (0, 0, 0), (square_size * 19, square_size * 44, square_size * 8, square_size * 2))
         if self.selected_algorithm == "breadth_first_search":
-            pygame.draw.rect(self.win, (blue2), (square_size * 19 + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
+            pygame.draw.rect(self.win, blue2, (square_size * 19 + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
         else:
             pygame.draw.rect(self.win, (255, 255, 255), (square_size * 19 + 1, square_size * 44 + 1, square_size * 8 - 2, square_size * 2 - 2))
         text = self.font.render("Breadth First", True, (0, 0, 0))
@@ -60,7 +61,7 @@ class Window:
         # Dijkstra's Algorithm
         pygame.draw.rect(self.win, (0, 0, 0), (square_size * 10, square_size * 41 + 10, square_size * 8, square_size * 2))
         if self.selected_algorithm == "dijkstras":
-            pygame.draw.rect(self.win, (blue2), (square_size * 10 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
+            pygame.draw.rect(self.win, blue2, (square_size * 10 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         else:
             pygame.draw.rect(self.win, (255, 255, 255), (square_size * 10 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         text = self.font.render("Dijkstra's Algo.", True, (0, 0, 0))
@@ -69,7 +70,7 @@ class Window:
         # DFS Algorithm
         pygame.draw.rect(self.win, (0, 0, 0), (square_size * 19, square_size * 41 + 10, square_size * 8, square_size * 2))
         if self.selected_algorithm == "depth_first_search":
-            pygame.draw.rect(self.win, (blue2), (square_size * 19 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
+            pygame.draw.rect(self.win, blue2, (square_size * 19 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         else:
             pygame.draw.rect(self.win, (255, 255, 255), (square_size * 19 + 1, square_size * 41 + 11, square_size * 8 - 2, square_size * 2 - 2))
         text = self.font.render("Depth First", True, (0, 0, 0))

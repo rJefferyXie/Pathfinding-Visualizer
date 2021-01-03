@@ -1,8 +1,6 @@
 from queue import PriorityQueue
-from node import Node
 from algorithms.heuristics import h1
 import time
-import math
 import pygame
 
 
@@ -47,13 +45,12 @@ def algorithm(start, end, grid, draw, win):
 
         # If we found the end node, draw the path
         if current_node == end:
-            time_taken = round(time.time() - start_time)
-            time_seconds = time_taken % 60
+            time_taken = float(round(time.time() - start_time, 2))
             cost = win.draw_solution(start, end, path, draw)
             win.previous_results = [
                 "Greedy Best First Results", 
                 "Total Cost of Path: " + str(cost), 
-                "Time Taken: " + str(time_seconds) + " seconds", 
+                "Time Taken: " + str(time_taken) + " seconds",
                 "Visited Nodes: " + str(len(visited))]
             return True
 
@@ -61,7 +58,7 @@ def algorithm(start, end, grid, draw, win):
             if event.type == pygame.QUIT:
                 pygame.quit()
 
-            if pygame.mouse.get_pressed()[0]:
+            if pygame.mouse.get_pressed(3)[0]:
                 pos = pygame.mouse.get_pos()
                 if 660 <= pos[1] <= 690:
                     if 150 <= pos[0] <= 270:

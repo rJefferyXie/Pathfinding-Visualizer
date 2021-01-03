@@ -1,4 +1,7 @@
+import math
+
 # These heuristics are used for A* search and Greedy Best First Search
+
 
 def h1(point1, point2):
     """
@@ -10,9 +13,10 @@ def h1(point1, point2):
     x2, y2 = point2
     return abs(x1 - x2) + abs(y1 - y2)
 
+
 def h2(point1, point2):
     """
-    This is the Euclidian Distance (pythagoreans theorem) Algorithm.
+    This is the Euclidean Distance (Pythagorean's theorem) Algorithm.
     I am currently not using this heuristic because it is not admissible with 4 neighbour adjacency.
     It also consistently returns worse results than h1.
     """
