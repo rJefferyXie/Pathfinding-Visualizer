@@ -1,5 +1,5 @@
 # Pathfinding Visualizer by Jeffery Xie
-A visual pathfinding program that allows the user to create their own obstacles or mazes and then run different pathfinding algorithms on it. This program includes the ability to place weighted path nodes, a results display after each successful path found, and five different algorithms to choose from.
+A visual pathfinding program that allows the user to create their own obstacles or mazes and then run different pathfinding algorithms on it. This program includes the ability to place weighted path nodes, a results display after each successful path found, the ability to generate a random maze, and five different algorithms to choose from.
 
 # Table of Contents
 * [Requirements and Installation](#req)
@@ -32,6 +32,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
    * Greedy Best First Search 
    * Breadth First Search 
    * Depth First Search 
+* A built in maze generator algorithm (Prim's Algorithm)
 * A real time visualization where you can see how each of the different pathfinding algorithms work.
 * The ability to construct your own mazes / obstacles for the pathfinding algorithm.
   * Can also create weighted nodes for weighted algorithms!
@@ -54,10 +55,11 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * Right click on a node to reset it.
    * Hold right click and move mouse to reset multiple nodes at once.
 * Press the "c" key to reset the board.
+* Press the "g" key to generate a random maze using Prim's algorithm.
 * Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
 ## Future Implementations <a name="future"></a>
-* A maze generator (recursive division..?)
+* More maze generator algorithms (recursive division..?)
 * Let the user search from a variety of different heuristics.
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
