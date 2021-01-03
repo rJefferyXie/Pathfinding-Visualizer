@@ -1,8 +1,6 @@
 # Pathfinding Visualizer by Jeffery Xie
 A visual pathfinding program that allows the user to create their own obstacles or mazes and then run different pathfinding algorithms on it. This program includes the ability to place weighted path nodes, a results display after each successful path found, the ability to generate a random maze, and five different algorithms to choose from.
 
-Please note that Pygame's graphics are going to be different depending on the machine that you are using. On Mac for example, things might look more blurry / pixelated.
-
 # Table of Contents
 * [Requirements and Installation](#req)
 * [Features](#features)
@@ -67,7 +65,12 @@ Please note that Pygame's graphics are going to be different depending on the ma
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
 ## Extra Information <a name="extra"></a>
-Keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
+
+Please note that Pygame's graphics are going to be different depending on the machine that you are using. On Mac for example, things might look more blurry / pixelated.
+
+Also, keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
+  * To make the algorithms run at normal speed, go to the files and remove the lines in the algorithm where it says "draw()".
+    * Ex. To speed up the maze generator algorithm, open prims.py, go to lines #72 and #163 and comment out the draw() call.
 
 
 **A Star Search**
