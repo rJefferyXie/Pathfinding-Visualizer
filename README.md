@@ -36,7 +36,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * A real time visualization where you can see how each of the different pathfinding algorithms work.
 * The ability to construct your own mazes / obstacles for the pathfinding algorithm.
   * Can also create weighted nodes for weighted algorithms!
-* A results display that shows the following information after each successful completion (only updates if a path was found).
+* A results display that shows the following information after each successful completion (if a path was found).
   * The name of the algorithm.
   * The total cost of the solution (sum of all node weights from the path that was found).
   * The time in seconds taken to find the path.
