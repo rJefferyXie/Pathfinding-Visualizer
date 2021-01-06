@@ -1,40 +1,63 @@
 import random
 import constants
+import pygame
 
 # I followed along with this guide to implement this algorithm into my program.
 # https://medium.com/swlh/fun-with-python-1-maze-generator-931639b4fb7e
 
 
-def algorithm(grid, draw):
+def algorithm(grid, draw, win):
     # Choose a random starting point and reset all nodes
     grid, walls = init_path(grid)
 
     while walls:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            
+            if pygame.mouse.get_pressed(3)[0]:
+                pos = pygame.mouse.get_pos()
+                if 660 <= pos[1] <= 690:
+                    if 150 <= pos[0] <= 270:
+                        if win.speed == "Fast":
+                            win.speed = "Medium"
+                        elif win.speed == "Medium":
+                            win.speed = "Slow"
+                        else:
+                            win.speed = "Fast"
+        
+        if win.speed == "Medium":
+            pygame.time.wait(10)
+        elif win.speed == "Slow":
+            pygame.time.wait(50)
         
         # Pick a random wall
         wall = walls.pop(int(random.random() * len(walls)) - 1)
 
+        row, col = wall
+
         # Check if wall is to the left of the path
-        if wall[1] != 0:
-            if grid[wall[0]][wall[1] - 1].is_default() and grid[wall[0]][wall[1] + 1].is_path():
+        if col != 0:
+            if grid[row][col - 1].is_default() and grid[row][col + 1].is_path():
                 neighbours = get_path_neighbours(wall, grid)
 
                 if neighbours < 2:
                     # Denote the new path
-                    grid[wall[0]][wall[1]].draw_path()
+                    grid[row][col].draw_path()
 
                     walls, grid = top_wall(wall, walls, grid)
                     walls, grid = bottom_wall(wall, walls, grid)
                     walls, grid = left_wall(wall, walls, grid)
 
         # Check if wall is above the path
-        if wall[0] != 0:
-            if grid[wall[0] - 1][wall[1]].is_default() and grid[wall[0] + 1][wall[1]].is_path():
+        if row != 0:
+            if grid[row - 1][col].is_default() and grid[row + 1][col].is_path():
                 neighbours = get_path_neighbours(wall, grid)
 
                 if neighbours < 2:
                     # Denote the new path
-                    grid[wall[0]][wall[1]].draw_path()
+                    grid[row][col].draw_path()
 
                     # Mark the new walls
                     walls, grid = top_wall(wall, walls, grid)
@@ -42,13 +65,13 @@ def algorithm(grid, draw):
                     walls, grid = right_wall(wall, walls, grid)
 
         # Check if wall is below the path
-        if wall[0] != constants.rows - 1:
-            if grid[wall[0] + 1][wall[1]].is_default() and grid[wall[0] - 1][wall[1]].is_path():
+        if row != constants.rows - 1:
+            if grid[row + 1][col].is_default() and grid[row - 1][col].is_path():
                 neighbours = get_path_neighbours(wall, grid)
 
                 if neighbours < 2:
                     # Denote the new path
-                    grid[wall[0]][wall[1]].draw_path()
+                    grid[row][col].draw_path()
 
                     # Mark the new walls
                     walls, grid = bottom_wall(wall, walls, grid)
@@ -56,13 +79,13 @@ def algorithm(grid, draw):
                     walls, grid = right_wall(wall, walls, grid)
 
         # Check if wall is to the right of the path
-        if wall[1] != constants.cols - 1:
-            if grid[wall[0]][wall[1] + 1].is_default() and grid[wall[0]][wall[1] - 1].is_path():
+        if col != constants.cols - 1:
+            if grid[row][col + 1].is_default() and grid[row][col - 1].is_path():
                 neighbours = get_path_neighbours(wall, grid)
 
                 if neighbours < 2:
                     # Denote the new path
-                    grid[wall[0]][wall[1]].draw_path()
+                    grid[row][col].draw_path()
 
                     # Mark the new walls
                     walls, grid = right_wall(wall, walls, grid)
@@ -75,41 +98,45 @@ def algorithm(grid, draw):
 
 
 def top_wall(wall, walls, grid):
-    if wall[0] != 0:
-        if not grid[wall[0] - 1][wall[1]].is_path():
-            grid[wall[0] - 1][wall[1]].place_wall()
-        if [wall[0] - 1, wall[1]] not in walls:
-            walls.append([wall[0] - 1, wall[1]])
+    row, col = wall
+    if row != 0:
+        if not grid[row - 1][col].is_path():
+            grid[row - 1][col].place_wall()
+        if [row - 1, col] not in walls:
+            walls.append([row - 1, col])
 
     return walls, grid
 
 
 def left_wall(wall, walls, grid):
-    if wall[1] != 0:
-        if not grid[wall[0]][wall[1] - 1].is_path():
-            grid[wall[0]][wall[1] - 1].place_wall()
-        if [wall[0], wall[1] - 1] not in walls:
-            walls.append([wall[0], wall[1] - 1])
+    row, col = wall
+    if col != 0:
+        if not grid[row][col - 1].is_path():
+            grid[row][col - 1].place_wall()
+        if [row, col - 1] not in walls:
+            walls.append([row, col - 1])
 
     return walls, grid
 
 
 def bottom_wall(wall, walls, grid):
-    if wall[0] != constants.rows - 1:
-        if not grid[wall[0] + 1][wall[1]].is_path():
-            grid[wall[0] + 1][wall[1]].place_wall()
-        if [wall[0] + 1, wall[1]] not in walls:
-            walls.append([wall[0] + 1, wall[1]])
+    row, col = wall
+    if row != constants.rows - 1:
+        if not grid[row + 1][col].is_path():
+            grid[row + 1][col].place_wall()
+        if [row + 1, col] not in walls:
+            walls.append([row + 1, col])
 
     return walls, grid
 
 
 def right_wall(wall, walls, grid):
-    if wall[1] != constants.cols - 1:
-        if not grid[wall[0]][wall[1] + 1].is_path():
-            grid[wall[0]][wall[1] + 1].place_wall()
-        if [wall[0], wall[1] + 1] not in walls:
-            walls.append([wall[0], wall[1] + 1])
+    row, col = wall
+    if col != constants.cols - 1:
+        if not grid[row][col + 1].is_path():
+            grid[row][col + 1].place_wall()
+        if [row, col + 1] not in walls:
+            walls.append([row, col + 1])
 
     return walls, grid
 
@@ -186,13 +213,22 @@ def finish_path(grid, draw):
 
 def get_path_neighbours(node, grid):
     neighbours = 0
-    if grid[node[0] - 1][node[1]].is_path():
+    row, col = node
+
+    # Up
+    if grid[row - 1][col].is_path():
         neighbours += 1
-    if grid[node[0] + 1][node[1]].is_path():
+
+    # Down
+    if grid[row + 1][col].is_path():
         neighbours += 1
-    if grid[node[0]][node[1] - 1].is_path():
+
+    # Left
+    if grid[row][col - 1].is_path():
         neighbours += 1
-    if grid[node[0]][node[1] + 1].is_path():
+
+    # Right
+    if grid[row][col + 1].is_path():
         neighbours += 1
 
     return neighbours

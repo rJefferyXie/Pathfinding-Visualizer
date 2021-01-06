@@ -1,4 +1,4 @@
-from constants import width, height, square_size, blue2, rows
+from constants import width, height, square_size, blue2, rows, cols
 from node import Node
 import pygame
 
@@ -17,15 +17,15 @@ class Window:
     def make_grid(self):
         # Make an N by N grid with each index implemented as a node
         grid = []
-        for i in range(width // square_size):
+        for i in range(rows):
             grid.append([])
-            for j in range(width // square_size):
+            for j in range(cols):
                 grid[i].append(Node(i, j))
         
         return grid
 
     def draw_grid(self):
-        for i in range(rows):
+        for i in range(rows + 1):
             pygame.draw.line(self.win, (0, 0, 0), (i * square_size, 0), (i * square_size, width), 1)
             pygame.draw.line(self.win, (0, 0, 0), (0, i * square_size), (width, i * square_size), 1)
     

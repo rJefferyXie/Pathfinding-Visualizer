@@ -121,7 +121,7 @@ def start_visualizer():
                 
                 # Generate a maze
                 if event.key == pygame.K_g:
-                    start, end, grid = prims.algorithm(grid, lambda: win.draw(grid))
+                    start, end, grid = prims.algorithm(grid, lambda: win.draw(grid), win)
 
     pygame.quit()
 

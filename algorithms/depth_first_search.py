@@ -29,7 +29,7 @@ def algorithm(start, end, draw, win):
         if current_node not in (start, end):
             current_node.draw_open()
 
-        # At the start of every iteration, pop the top element from the queue
+        # At the start of every iteration, pop the top element from the stack
         current_node = frontier.pop()
 
         # If we found the end node, draw the path
