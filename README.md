@@ -9,6 +9,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * [Controls](#controls)
 * [Future Implementations](#future)
 * [Extra Information](#extra)
+* [Credits and Acknowledgement](#creds)
 
 ## Requirements and Installation <a name="req"></a>
 Make sure you have a python version of 3.x or higher!
@@ -124,3 +125,8 @@ Also, keep in mind that since this program is taking time to draw every node tha
   * The order of traversal for DFS is up, right, down, left
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N), where N is the number of nodes in the call stack
+
+## Credits and Acknowledgement <a name="creds"></a>
+I followed this video during the start of this project, just to built a solid foundation and wrap my head around A* search. https://www.youtube.com/watch?v=JtiK0DOeI4A&ab_channel=TechWithTim
+
+I got the idea for this project from this video: https://www.youtube.com/watch?v=n4t_-NjY_Sg&t=388s&ab_channel=Cl%C3%A9mentMihailescu
