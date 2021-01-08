@@ -80,7 +80,7 @@ Note that Pygame's graphics are going to be different depending on the machine /
 
 Also, keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
   * To make the algorithms run at normal speed, go to the files and remove the lines in the algorithm where it calls "draw()".
-    * Ex. To speed up the maze generator algorithm, open prims.py, go to lines #72 and #163 and comment out the draw() calls.
+    * Ex. To speed up the maze generator algorithm, open prims.py, go to lines #95 and #190 and comment out the draw() calls.
 
 **A Star Search**
 * I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
