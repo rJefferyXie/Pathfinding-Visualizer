@@ -71,7 +71,7 @@ Make sure you have a python version of 3.x or higher!
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
 ## Extra Information <a name="extra"></a>
-Note that Pygame's graphics are going to be different depending on the machine that you are using. On Mac for example, things might look more blurry / pixelated.
+Note that Pygame's graphics are going to be different depending on the machine that you are using. I coded this on Mac so things look good on that machine, but on Windows text may be off center and things might look more blurry / pixelated.
 
 Also, keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
   * To make the algorithms run at normal speed, go to the files and remove the lines in the algorithm where it calls "draw()".
