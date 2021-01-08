@@ -15,8 +15,7 @@ def algorithm(start, end, grid, draw, win):
     start_time = time.time()
 
     # Frontier is the queue of nodes that are currently being considered
-    frontier = Queue()
-    frontier.put((start, 0))
+    frontier = [(start, 0)]
 
     # Keeps track of the paths by saving references to where each node came from
     path = {}
@@ -24,16 +23,11 @@ def algorithm(start, end, grid, draw, win):
     # A set of all nodes that were visited
     visited = {start}
 
-    # Make sure we are moving outwards on each iteration
-    # A dictionary that holds a Node mapped to its individual distance for every node in grid
-    distances = {Node: float("inf") for row in grid for Node in row}
-    distances[start] = 0
-
     # While there is still a possible path
-    while not frontier.empty():
+    while frontier:
 
         # At the start of every iteration, pop the first element from the queue (dequeue)
-        current_node = frontier.get()[0]
+        current_node, distance = frontier.pop(0)
 
         # If we found the solution, draw the path
         if current_node == end:
@@ -66,19 +60,15 @@ def algorithm(start, end, grid, draw, win):
         elif win.speed == "Slow":
             pygame.time.wait(50)
 
-        next_distance = distances[current_node] + 1
-
         for neighbour in current_node.neighbours:
-            if next_distance < distances[neighbour]:
-                distances[neighbour] = next_distance
 
-                # Make sure not to add duplicate nodes into the frontier and path
-                if neighbour not in visited:
-                    path[neighbour] = current_node
-                    visited.add(neighbour)
-                    neighbour.draw_open()
+            # Make sure not to add duplicate nodes into the frontier and path
+            if neighbour not in visited:
+                path[neighbour] = current_node
+                visited.add(neighbour)
+                neighbour.draw_open()
 
-                    frontier.put((neighbour, distances[neighbour]))
+                frontier.append((neighbour, distance + 1))
 
         draw()
 

@@ -8,7 +8,7 @@ class Window:
         pygame.init()
         pygame.font.init()
         pygame.display.set_caption("Pathfinding Visualizer by Jeffery Xie")
-        self.font = pygame.font.SysFont("arial", 15)
+        self.font = pygame.font.SysFont("calibri", 15)
         self.win = pygame.display.set_mode((width, height))
         self.selected_algorithm = None
         self.speed = "Fast"
