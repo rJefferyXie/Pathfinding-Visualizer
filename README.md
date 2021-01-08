@@ -8,10 +8,11 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * [Features](#features)
 * [Controls](#controls)
 * [Future Implementations](#future)
+* [Demo Images](#demo)
 * [Extra Information](#extra)
 * [Credits and Acknowledgement](#creds)
 
-## Requirements and Installation <a name="req"></a>
+# Requirements and Installation <a name="req"></a>
 Make sure you have a python version of 3.x or higher!
 
 **Required Modules**
@@ -31,7 +32,7 @@ Make sure you have a python version of 3.x or higher!
 **Running**
 * You can run the program by running visualizer.py!
 
-## Features <a name="features"></a>
+# Features <a name="features"></a>
 * Five Unique Pathfinding Algorithms
    * A* Search 
    * Dijkstras Algorithm 
@@ -49,7 +50,7 @@ Make sure you have a python version of 3.x or higher!
   * The number of nodes that were visited / searched.
 * A toggleable speed that you can change before / during the running of an algorithm.
 
-## Controls <a name="controls"></a>
+# Controls <a name="controls"></a>
 * Left click to place a node.
    * Your first click will be the start node. (Green)
    * Your second click will be the end node. (Red)
@@ -64,14 +65,18 @@ Make sure you have a python version of 3.x or higher!
 * Press the "g" key to generate a random maze using Prim's algorithm.
 * Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
-## Future Implementations <a name="future"></a>
+# Future Implementations <a name="future"></a>
 * More maze generator algorithms (recursive division..?)
 * Let the user search from a variety of different heuristics.
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
-## Extra Information <a name="extra"></a>
-Note that Pygame's graphics are going to be different depending on the machine that you are using. I coded this on Mac so things look good on that machine, but on Windows text may be off center and things might look more blurry / pixelated.
+# Demo Images <a name="demo"></a>
+![search_demo](https://cdn.discordapp.com/attachments/770779709172613122/797213643833999400/demo.png)
+![maze_demo](https://cdn.discordapp.com/attachments/770779709172613122/797213660619603998/maze.png)
+
+# Extra Information <a name="extra"></a>
+Note that Pygame's graphics are going to be different depending on the machine / version of machine that you are using. I coded this on a windows machine so things look good for me, but on Mac for example text may be off center and things might look more blurry / pixelated.
 
 Also, keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
   * To make the algorithms run at normal speed, go to the files and remove the lines in the algorithm where it calls "draw()".
@@ -126,7 +131,7 @@ Also, keep in mind that since this program is taking time to draw every node tha
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N), where N is the number of nodes in the call stack
 
-## Credits and Acknowledgement <a name="creds"></a>
+# Credits and Acknowledgement <a name="creds"></a>
 I followed this video during the start of this project, just to built a solid foundation and wrap my head around A* search. https://www.youtube.com/watch?v=JtiK0DOeI4A&ab_channel=TechWithTim
 
 I got the idea for this project from this video: https://www.youtube.com/watch?v=n4t_-NjY_Sg&t=388s&ab_channel=Cl%C3%A9mentMihailescu
