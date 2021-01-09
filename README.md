@@ -120,7 +120,7 @@ Also, keep in mind that since this program is taking time to draw every node tha
 **Breadth First Search**
 * Breadth First Search is a non-weighted algorithm that guarantees the shortest path.
   * Note that this search treats every node as a cost = 1 node. This means that if there
-  * are weighted nodes, it will treat them as normal nodes.
+are weighted nodes, it will treat them as normal nodes.
 * Breadth First Search uses FIFO (queue).
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N) where N is the number of nodes in the call stack
