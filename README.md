@@ -84,7 +84,7 @@ Also, keep in mind that since this program is taking time to draw every node tha
     * Ex. To speed up the maze generator algorithm, open prims.py, go to lines #95 and #190 and comment out the draw() calls.
 
 **A Star Search**
-* I've implemented a weighted A* search which can calculate shortest path in relation to cost when the path weights are not all the same. 
+* I've implemented a weighted A* search which calculates shortest path in relation to cost when the path weights are not all the same. 
   * Note that not all A* searches are weighted!
 * This implementation uses a priority queue for its frontier, which prioritizes nodes with the lowest F score.
   * F = G + H + node cost, where
@@ -119,8 +119,7 @@ Also, keep in mind that since this program is taking time to draw every node tha
 
 **Breadth First Search**
 * Breadth First Search is a non-weighted algorithm that guarantees the shortest path.
-  * Note that this search treats every node as a cost = 1 node. This means that if there
-are weighted nodes, it will treat them as normal nodes.
+  * Note that this search treats every node as a 1-cost node. This means that if there are weighted nodes, it will treat them as normal nodes.
 * Breadth First Search uses FIFO (queue).
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N) where N is the number of nodes in the call stack
