@@ -67,8 +67,9 @@ Make sure you have a python version of 3.x or higher!
 
 # Future Implementations <a name="future"></a>
 * More maze generator algorithms (recursive division..?)
-* Let the user search from a variety of different heuristics. (euclidian distance, 
+* Let the user search from a variety of different heuristics. (Diagonal distance..)
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
+  * I've already implemented the euclidian distance heuristic, but realized that this is intended for problems where you are able to traverse the graph in any angle (not just up, down, right, left, diagonally). My program does not allow movement at any arbitrary angle like 23 degrees for example, so I am not using this heuristic.
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
 # Demo Images <a name="demo"></a>
