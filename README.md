@@ -30,7 +30,7 @@ Make sure you have a python version of 3.x or higher!
   * If using Visual Studio Code, go to explorer (ctrl + shift + e) --> clone repository --> paste the url --> clone
 
 **Running**
-* You can run the program by running visualizer.py!
+* You can start the program by running visualizer.py!
 
 # Features <a name="features"></a>
 * Five Unique Pathfinding Algorithms
@@ -67,7 +67,7 @@ Make sure you have a python version of 3.x or higher!
 
 # Future Implementations <a name="future"></a>
 * More maze generator algorithms (recursive division..?)
-* Let the user search from a variety of different heuristics.
+* Let the user search from a variety of different heuristics. (euclidian distance, 
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
 * Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
 
@@ -95,7 +95,7 @@ Also, keep in mind that since this program is taking time to draw every node tha
     * and d is the depth of the shortest path to the end node
   * I am using the Manhattan Distance which is an admissible heuristic. 
     * An admissible heuristic never overestimates the cost of reaching the goal node
-* A* Search is guaranteed to return the shortest path.
+* A* Search is guaranteed to return the shortest path when using an admissible heuristic.
 
 **Greedy Best First Search**
 * Greedy Best First Search is a weighted algorithm that does not guarantee the shortest path.
