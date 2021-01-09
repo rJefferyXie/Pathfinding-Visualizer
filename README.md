@@ -77,9 +77,9 @@ Make sure you have a python version of 3.x or higher!
 ![maze_demo](https://cdn.discordapp.com/attachments/770779709172613122/797213660619603998/maze.png)
 
 # Extra Information <a name="extra"></a>
-Note that Pygame's graphics are going to be different depending on the machine / version of machine that you are using. I coded this on a windows machine so things look good for me, but on Mac for example text may be off center and things might look more blurry / pixelated.
+Note that Pygame's graphics are going to be different depending on the machine / version of machine that you are using. I coded this on a windows machine so things look good for me, but on Mac for example text may be off center and things might look blurry or pixelated.
 
-Also, keep in mind that since this program is taking time to draw every node that it creates / looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
+Also, keep in mind that since this program is taking time to draw every node that it creates and looks at, the algorithms will naturally run a little bit slower than usual, especially for the maze generating algorithm.
   * To make the algorithms run at normal speed, go to the files and remove the lines in the algorithm where it calls "draw()".
     * Ex. To speed up the maze generator algorithm, open prims.py, go to lines #95 and #190 and comment out the draw() calls.
 
