@@ -16,7 +16,7 @@ def algorithm(start, end, grid, draw, win):
 
     start_time = time.time()
 
-    # Used for g score (the distance between current node and starting node)
+    # Used for a tiebreaker in case of two nodes with similar F scores
     distance = 0
 
     # Priority Queue to pop the current best node (node with lowest f_score)
