@@ -98,7 +98,7 @@ def algorithm(start, end, grid, draw, win):
                     visited.add(neighbour)
                     neighbour.draw_open()
 
-                    # Increment distance because we are adding a new node
+                    # Increment distance because we are moving further away from start node
                     distance += 1
                     frontier.put((f_score[neighbour], distance, neighbour))
 
