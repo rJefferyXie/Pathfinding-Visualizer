@@ -15,7 +15,7 @@ def algorithm(start, end, grid, draw, win):
     start_time = time.time()
 
     # Frontier is the queue of nodes that are currently being considered
-    frontier = [(start, 0)]
+    frontier = [start]
 
     # Keeps track of the paths by saving references to where each node came from
     path = {}
@@ -27,7 +27,7 @@ def algorithm(start, end, grid, draw, win):
     while frontier:
 
         # At the start of every iteration, pop the first element from the queue (dequeue)
-        current_node, distance = frontier.pop(0)
+        current_node= frontier.pop(0)
 
         # If we found the solution, draw the path
         if current_node == end:
@@ -66,14 +66,13 @@ def algorithm(start, end, grid, draw, win):
             if neighbour not in visited:
                 path[neighbour] = current_node
                 visited.add(neighbour)
+                frontier.append(neighbour)
                 neighbour.draw_open()
-
-                frontier.append((neighbour, distance + 1))
-
-        draw()
 
         # Close off the current node because we will not need to look at it again
         if current_node not in (start, end):
             current_node.draw_visited()
+        
+        draw()
         
     return False

@@ -22,12 +22,12 @@ def algorithm(start, end, grid, draw, win):
     start_time = time.time()
 
     # Used for a tiebreaker in case of two nodes with similar F scores
-    distance = 0
+    position = 0
 
     # Priority Queue to pop the current best node (node with lowest f_score)
     # The frontier is the queue of nodes that are currently being considered
     frontier = PriorityQueue()
-    frontier.put((0, distance, start))
+    frontier.put((0, position, start))
 
     # Keeps track of the paths by saving references to where each node came from
     path = {}
@@ -98,9 +98,9 @@ def algorithm(start, end, grid, draw, win):
                     visited.add(neighbour)
                     neighbour.draw_open()
 
-                    # Increment distance because we are moving further away from start node
-                    distance += 1
-                    frontier.put((f_score[neighbour], distance, neighbour))
+                    # Increment position in queue
+                    position += 1
+                    frontier.put((f_score[neighbour], position, neighbour))
 
         draw()
 
