@@ -102,10 +102,10 @@ def algorithm(start, end, grid, draw, win):
                     position += 1
                     frontier.put((f_score[neighbour], position, neighbour))
 
-        draw()
-
         # Close off the current node because we will not need to look at it again
         if current_node not in (start, end):
             current_node.draw_visited()
+
+        draw()
         
     return False
