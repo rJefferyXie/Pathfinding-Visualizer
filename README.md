@@ -33,6 +33,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
   * The time in seconds taken to find the path.
   * The number of nodes that were visited / searched.
 * A toggleable speed that you can change before / during the running of an algorithm.
+* The ability to pause and resume an algorithm that is in process to work through the problem with it.
 
 # Controls <a name="controls"></a>
 * Left click to place a node.
@@ -47,6 +48,7 @@ A visual pathfinding program that allows the user to create their own obstacles 
    * Hold right click and move mouse to reset multiple nodes at once.
 * Press the "c" key to reset the board.
 * Press the "g" key to generate a random maze using Prim's algorithm.
+* Press the "p" key during any algorithm to pause/unpause it.
 * Press the spacebar key to start the search after choosing a pathfinding algorithm.
 
 # Requirements and Installation <a name="req"></a>
@@ -74,7 +76,7 @@ Make sure you have a python version of 3.x or higher!
 * Let the user search from a variety of different heuristics. (Diagonal distance..)
   * Will likely need to change my neighbourhood definition from a 4 neighbourhood adjacency to 8 adjacency
   * I've already implemented the euclidian distance heuristic, but realized that this is intended for problems where you are able to traverse the graph in any angle (not just up, down, right, left, diagonally). My program does not allow movement at any arbitrary angle like 23 degrees for example, so I am not using this heuristic.
-* Implement more algorithms (bidirectional bfs, ida*, swarm, etc)
+* Implement more algorithms (bidirectional bfs, ida*, etc)
 
 # Extra Information <a name="extra"></a>
 Note that Pygame's graphics are going to be different depending on the machine / version of machine that you are using. I coded this on a windows machine so things look good for me, but on Mac for example text may be off center and things might look blurry or pixelated.
