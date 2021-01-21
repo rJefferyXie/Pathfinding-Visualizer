@@ -47,24 +47,14 @@ def algorithm(start, end, grid, draw, win):
 
     # While there is still a possible path
     while not frontier.empty():
-
-        # At the start of every iteration, pop the lowest f score node from priority queue
-        current_node = frontier.get()[2]
-
-        # If we found the solution, draw the path
-        if current_node == end:
-            time_taken = float(round(time.time() - start_time, 2))
-            cost = win.draw_solution(start, end, path, draw)
-            win.previous_results = [
-                "A* Search Results", 
-                "Total Cost of Path: " + str(cost), 
-                "Time Taken: " + str(time_taken) + " seconds",
-                "Visited Nodes: " + str(len(visited))]
-            return True
-
+        draw()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p:
+                    win.paused = not win.paused
             
             if pygame.mouse.get_pressed(3)[0]:
                 pos = pygame.mouse.get_pos()
@@ -81,6 +71,23 @@ def algorithm(start, end, grid, draw, win):
             pygame.time.wait(10)
         elif win.speed == "Slow":
             pygame.time.wait(50)
+
+        if win.paused:
+            continue
+
+        # At the start of every iteration, pop the lowest f score node from priority queue
+        current_node = frontier.get()[2]
+
+        # If we found the solution, draw the path
+        if current_node == end:
+            time_taken = float(round(time.time() - start_time, 2))
+            cost = win.draw_solution(start, end, path, draw)
+            win.previous_results = [
+                "A* Search Results", 
+                "Total Cost of Path: " + str(cost), 
+                "Time Taken: " + str(time_taken) + " seconds",
+                "Visited Nodes: " + str(len(visited))]
+            return True
 
         # This will be the next g score for any neighbours with lower costs
         next_g_score = g_score[current_node] + current_node.weight
@@ -105,7 +112,5 @@ def algorithm(start, end, grid, draw, win):
         # Close off the current node because we will not need to look at it again
         if current_node not in (start, end):
             current_node.draw_visited()
-
-        draw()
         
     return False

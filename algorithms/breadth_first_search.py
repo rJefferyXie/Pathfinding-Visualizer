@@ -25,6 +25,33 @@ def algorithm(start, end, grid, draw, win):
 
     # While there is still a possible path
     while frontier:
+        draw()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p:
+                    win.paused = not win.paused
+            
+            if pygame.mouse.get_pressed(3)[0]:
+                pos = pygame.mouse.get_pos()
+                if 660 <= pos[1] <= 690:
+                    if 150 <= pos[0] <= 270:
+                        if win.speed == "Fast":
+                            win.speed = "Medium"
+                        elif win.speed == "Medium":
+                            win.speed = "Slow"
+                        else:
+                            win.speed = "Fast"
+        
+        if win.speed == "Medium":
+            pygame.time.wait(10)
+        elif win.speed == "Slow":
+            pygame.time.wait(50)
+
+        if win.paused:
+            continue
 
         # At the start of every iteration, pop the first element from the queue (dequeue)
         current_node= frontier.pop(0)
@@ -40,26 +67,6 @@ def algorithm(start, end, grid, draw, win):
                 "Visited Nodes: " + str(len(visited))]
             return True
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-
-            if pygame.mouse.get_pressed(3)[0]:
-                pos = pygame.mouse.get_pos()
-                if 660 <= pos[1] <= 690:
-                    if 150 <= pos[0] <= 270:
-                        if win.speed == "Fast":
-                            win.speed = "Medium"
-                        elif win.speed == "Medium":
-                            win.speed = "Slow"
-                        else:
-                            win.speed = "Fast"
-
-        if win.speed == "Medium":
-            pygame.time.wait(10)
-        elif win.speed == "Slow":
-            pygame.time.wait(50)
-
         for neighbour in current_node.neighbours:
 
             # Make sure not to add duplicate nodes into the frontier and path
@@ -72,7 +79,5 @@ def algorithm(start, end, grid, draw, win):
         # Close off the current node because we will not need to look at it again
         if current_node not in (start, end):
             current_node.draw_visited()
-        
-        draw()
         
     return False

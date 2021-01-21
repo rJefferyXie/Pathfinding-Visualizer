@@ -11,10 +11,14 @@ def algorithm(grid, draw, win):
     grid, walls = init_path(grid)
 
     while walls:
-
+        draw()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p:
+                    win.paused = not win.paused
             
             if pygame.mouse.get_pressed(3)[0]:
                 pos = pygame.mouse.get_pos()
@@ -31,6 +35,9 @@ def algorithm(grid, draw, win):
             pygame.time.wait(10)
         elif win.speed == "Slow":
             pygame.time.wait(50)
+
+        if win.paused:
+            continue
         
         # Pick a random wall
         wall = walls.pop(int(random.random() * len(walls)) - 1)
@@ -91,8 +98,6 @@ def algorithm(grid, draw, win):
                     walls, grid = right_wall(wall, walls, grid)
                     walls, grid = bottom_wall(wall, walls, grid)
                     walls, grid = top_wall(wall, walls, grid)
-
-        draw()
 
     return finish_path(grid, draw)
 

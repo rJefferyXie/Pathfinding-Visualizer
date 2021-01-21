@@ -12,6 +12,7 @@ class Window:
         self.win = pygame.display.set_mode((width, height))
         self.selected_algorithm = None
         self.speed = "Fast"
+        self.paused = False
         self.previous_results = []
 
     def make_grid(self):

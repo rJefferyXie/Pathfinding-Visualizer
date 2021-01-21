@@ -25,7 +25,35 @@ def algorithm(start, end, draw, win):
 
     current_node = start
     # While there is still a possible path
-    while len(frontier) > 0:
+    while frontier:
+        draw()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_p:
+                    win.paused = not win.paused
+            
+            if pygame.mouse.get_pressed(3)[0]:
+                pos = pygame.mouse.get_pos()
+                if 660 <= pos[1] <= 690:
+                    if 150 <= pos[0] <= 270:
+                        if win.speed == "Fast":
+                            win.speed = "Medium"
+                        elif win.speed == "Medium":
+                            win.speed = "Slow"
+                        else:
+                            win.speed = "Fast"
+        
+        if win.speed == "Medium":
+            pygame.time.wait(10)
+        elif win.speed == "Slow":
+            pygame.time.wait(50)
+
+        if win.paused:
+            continue
+
         if current_node not in (start, end):
             current_node.draw_open()
 
@@ -43,26 +71,6 @@ def algorithm(start, end, draw, win):
                 "Visited Nodes: " + str(len(visited))]
             return True
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-
-            if pygame.mouse.get_pressed(3)[0]:
-                pos = pygame.mouse.get_pos()
-                if 660 <= pos[1] <= 690:
-                    if 150 <= pos[0] <= 270:
-                        if win.speed == "Fast":
-                            win.speed = "Medium"
-                        elif win.speed == "Medium":
-                            win.speed = "Slow"
-                        else:
-                            win.speed = "Fast"
-
-        if win.speed == "Medium":
-            pygame.time.wait(10)
-        elif win.speed == "Slow":
-            pygame.time.wait(50)
-
         if current_node not in visited:
             visited.add(current_node)
 
@@ -76,7 +84,5 @@ def algorithm(start, end, draw, win):
         # Close off the current node because we will not need to look at it again
         if current_node not in (start, end):
             current_node.draw_visited()
-
-        draw()
     
     return False
