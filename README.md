@@ -10,7 +10,6 @@ A visual pathfinding program that allows the user to create their own obstacles 
 * [Requirements and Installation](#req)
 * [Future Implementations](#future)
 * [Extra Information](#extra)
-* [Credits and Acknowledgement](#creds)
 
 # Demo Images <a name="demo"></a>
 ![search_demo](https://cdn.discordapp.com/attachments/770779709172613122/797213643833999400/demo.png)
@@ -132,9 +131,3 @@ Also, keep in mind that since this program is taking time to draw every node tha
   * The order of traversal for DFS is up, right, down, left
 * Time complexity is O(N + E), where N is number of nodes and E is number of edges
 * Space complexity is O(N), where N is the number of nodes in the call stack
-
-# Credits and Acknowledgement <a name="creds"></a>
-I followed this video during the start of this project, just to built a solid foundation and wrap my head around A* search. https://www.youtube.com/watch?v=JtiK0DOeI4A&ab_channel=TechWithTim
-  * I used some ideas from his code such as the spot class and learned how the A* algorithm does its calculations from his explanations. I used some ideas from his implementation of the A* algorithm but with various improvements where I could find them (reassigning variables when you only need to assign them once, adding nodes to the stack only when they haven't been visited yet (saves a lot of memory), and even implemented weight calculation to create a weighted A* search variant.).
-
-I got the idea for this project from this video: https://www.youtube.com/watch?v=n4t_-NjY_Sg&t=388s&ab_channel=Cl%C3%A9mentMihailescu
